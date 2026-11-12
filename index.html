@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="cupcake" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>まなのプロフィールサイト</title>
+    <!-- daisyUI & Tailwind CSS (CDN 2行) -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-teal-50 via-pink-50 to-amber-50 text-base-content flex flex-col">
+
+    <!-- ナビバー -->
+    <header class="sticky top-0 z-50 bg-base-100/80 backdrop-blur-md shadow-sm">
+        <div class="navbar max-w-4xl mx-auto px-4">
+            <div class="flex-1">
+                <a href="#" class="btn btn-ghost text-xl font-bold text-primary">まな Profile</a>
+            </div>
+            <div class="flex-none">
+                <ul class="menu menu-horizontal px-1 gap-1 text-xs sm:text-sm font-medium">
+                    <li><a href="#about">ひとこと</a></li>
+                    <li><a href="#likes">好きなもの</a></li>
+                    <li><a href="#learning">学び</a></li>
+                    <li><a href="#works">作品</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="flex-grow max-w-4xl w-full mx-auto p-4 sm:p-6 space-y-12 my-6">
+
+        <!-- 1. ひとこと セクション -->
+        <section id="about" class="pt-4">
+            <div class="card bg-base-100/90 backdrop-blur-sm shadow-xl border border-white/50 p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row items-center gap-6">
+                    <!-- アバター（イニシャル表示） -->
+                    
+
+                    <!-- プロフィール & ひとこと -->
+                      <div class="avatar avatar-placeholder">
+                        <div class="bg-primary text-primary-content ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
+                            <span class="text-3xl font-bold">M</span>
+                        </div>
+                    </div>
+                        
+                        <div class="chat chat-start justify-center sm:justify-start">
+                            <div class="chat-bubble chat-bubble-primary text-base font-medium shadow-sm">
+                                サッカーが好きです。⚽✨
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex items-center justify-center sm:justify-start gap-4">
+                            <button id="likeBtn" onclick="addLike()" class="btn btn-sm btn-outline btn-secondary rounded-full gap-2 transition-transform active:scale-95">
+                                <span>いいね！</span>
+                                <div id="likeBadge" class="badge badge-secondary badge-sm">0</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 好きなもの セクション -->
+        <section id="likes">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 border-l-4 border-primary pl-3">
+                <span>❤️</span> 好きなもの
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- サッカー -->
+                <div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow border border-base-200">
+                    <div class="card-body">
+                        <div class="text-4xl mb-2">⚽</div>
+                        <h3 class="card-title text-lg">サッカー</h3>
+                        <p class="text-sm text-base-content/80">自分でプレイするのも、試合観戦で盛り上がるのも大好きです！</p>
+                    </div>
+                </div>
+                <!-- バレー -->
+                <div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow border border-base-200">
+                    <div class="card-body">
+                        <div class="text-4xl mb-2">🏐</div>
+                        <h3 class="card-title text-lg">バレー</h3>
+                        <p class="text-sm text-base-content/80">みんなでパスをつないでラリーが続いたときの爽快感が最高です。</p>
+                    </div>
+                </div>
+                <!-- ゲーム -->
+                <div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow border border-base-200">
+                    <div class="card-body">
+                        <div class="text-4xl mb-2">🎮</div>
+                        <h3 class="card-title text-lg">ゲーム</h3>
+                        <p class="text-sm text-base-content/80">休みの日は友達とボイスチャットをしながら協力プレイを楽しんでいます。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 最近学んでいること セクション -->
+        <section id="learning">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 border-l-4 border-secondary pl-3">
+                <span>📚</span> 最近学んでいること
+            </h2>
+            <div class="card bg-base-100 shadow-md border border-base-200 p-6">
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <span class="badge badge-primary font-bold">1</span>
+                        <div>
+                            <h3 class="font-bold">HTML と CSS の読み方</h3>
+                            <p class="text-sm text-base-content/70 mt-1">Webページの構造（HTML）と見た目の装飾（CSS）の仕組みを基礎から学習しています。</p>
+                        </div>
+                    </li>
+                    <div class="divider my-1"></div>
+                    <li class="flex items-start gap-3">
+                        <span class="badge badge-secondary font-bold">2</span>
+                        <div>
+                            <h3 class="font-bold">daisyUI の部品</h3>
+                            <p class="text-sm text-base-content/70 mt-1">便利なコンポーネントクラスを使って、効率よくきれいなデザインを作る練習をしています。</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 4. この授業で作ったもの セクション -->
+        <section id="works">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2 border-l-4 border-accent pl-3">
+                <span>🛠️</span> この授業で作ったもの
+            </h2>
+            <div class="card lg:card-side bg-base-100 shadow-md border border-base-200 overflow-hidden">
+                <div class="bg-accent/10 p-8 flex items-center justify-center min-w-[200px]">
+                    <span class="text-6xl">📇</span>
+                </div>
+                <div class="card-body">
+                    <div class="flex items-center gap-2">
+                        <span class="badge badge-accent badge-sm">第5回</span>
+                        <h3 class="card-title text-lg">daisyUI の自己紹介カード</h3>
+                    </div>
+                    <p class="text-sm text-base-content/80 mt-2">
+                        daisyUI の各種コンポーネントを組み合わせ、グラデーション背景やインタラクティブな「いいね！」ボタンを取り入れたカードを作成しました。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- フッター -->
+    <footer class="footer footer-center p-6 bg-base-100/60 text-base-content/70 border-t border-base-200 mt-auto">
+        <aside>
+            <p>© まな 2026</p>
+        </aside>
+    </footer>
+
+    <!-- いいねボタン用 JavaScript -->
+    <script>
+        let count = 0;
+        function addLike() {
+            count++;
+            const badge = document.getElementById('likeBadge');
+            badge.innerText = count;
+            
+            const btn = document.getElementById('likeBtn');
+            btn.classList.add('animate-bounce');
+            setTimeout(() => {
+                btn.classList.remove('animate-bounce');
+            }, 500);
+        }
+    </script>
+</body>
+</html>
